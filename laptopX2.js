@@ -15,6 +15,8 @@ fetch('https://hickory-quilled-actress.glitch.me/computers')
 
 const handleComputers = (computers) => {
     computers.forEach(x => addCompToMenu(x)); //Adding menu
+    // add default value
+    populateLaptopInfo(computers[0])
 }
 const addCompToMenu = (eachComp) => {
     const compElement = document.createElement("option") //creating 1 element, like a placeholder
@@ -23,6 +25,18 @@ const addCompToMenu = (eachComp) => {
     select.appendChild(compElement)
 }
 
+const populateLaptopInfo = (laptopInstance) => {
+
+    productFeatures.innerText = laptopInstance.specs
+    //Product Description
+    productDescription.innerText = laptopInstance.description
+    //Second title
+    secondTitle.textContent = laptopInstance.title
+    // set image
+    image.src = 'https://hickory-quilled-actress.glitch.me/computers'.replace('computers','') + laptopInstance.image
+
+    //Price
+}
 
 const handleFeature = e => {
     /*
@@ -45,6 +59,11 @@ const handleFeature = e => {
 }
 
 select.addEventListener("change", handleFeature)
+
+//add event lister for Get a Loan
+//add event lister for WORK
+    //add event listerne for bank button
+        //move balance
 
 
 
