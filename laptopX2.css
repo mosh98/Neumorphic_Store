@@ -1,0 +1,14 @@
+.selector-for-some-widget {
+    box-sizing: content-box;
+}
+
+.div1 {
+    padding-bottom: 20px;
+}
+.div2 {
+    padding-top: 20px;
+}
+
+.Same{
+    display:inline-block;
+}

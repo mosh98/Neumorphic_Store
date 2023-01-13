@@ -1,6 +1,9 @@
 var select = document.getElementById("dropdown");
 var productFeatures = document.getElementById("product-features")
+var productDescription = document.getElementById("Description")
+var secondTitle = document.getElementById("second-card-title")
 
+var image = document.getElementById("image")
 
 let laptops = []
 
@@ -22,8 +25,23 @@ const addCompToMenu = (eachComp) => {
 
 
 const handleFeature = e => {
+    /*
+    * write comments: what is this function doing?
+    * this function is getting the value of the dropdown menu and then using that value to find the matching computer in the array
+    * then it is using the computer object to populate the product features section  */
+
     const selectedComp = laptops.find(x => x.id == e.target.value) //be carefull of this line
+
     productFeatures.innerText = selectedComp.specs
+    //Product Description
+    productDescription.innerText = selectedComp.description
+    //Second title
+    secondTitle.textContent = selectedComp.title
+    // set image
+    image.src = 'https://hickory-quilled-actress.glitch.me/computers'.replace('computers','') + selectedComp.image
+
+    //Price
+
 }
 
 select.addEventListener("change", handleFeature)
