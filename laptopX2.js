@@ -7,11 +7,15 @@ var image = document.getElementById("image")
 
 var workButton = document.getElementById("work-btn")
 var bankButton = document.getElementById("bank-btn")
-
-
+var piggy = document.getElementById("bankBalance") //piggy for piggy bank
+var getLoan = document.getElementById("loan-btn")
+var loanBal = document.getElementById("LoanBalance")
 
 let laptops = []
 let workBalanceVariable = 0
+let bankBalance = 200
+let loanVar = 0
+let loanTaken = false
 
 fetch('https://hickory-quilled-actress.glitch.me/computers')
     .then((response) => response.json() )
@@ -32,7 +36,6 @@ const addCompToMenu = (eachComp) => {
 }
 
 const populateLaptopInfo = (laptopInstance) => {
-
     productFeatures.innerText = laptopInstance.specs
     //Product Description
     productDescription.innerText = laptopInstance.description
@@ -40,7 +43,6 @@ const populateLaptopInfo = (laptopInstance) => {
     secondTitle.textContent = laptopInstance.title
     // set image
     image.src = 'https://hickory-quilled-actress.glitch.me/computers'.replace('computers','') + laptopInstance.image
-
     //Price
 }
 
@@ -62,23 +64,89 @@ const handleFeature = e => {
 select.addEventListener("change", handleFeature)
 
 //add event lister for Get a Loan
+getLoan.addEventListener("click",function (){
+    /*TODO:
+    *   [Done] Set piggy
+    *   You cannot get two bank loans
+    *   Outstadning Loan Field (Only visible after taking a loan)
+    *
+    * */
+
+    let requestedLoanAmount = prompt("Enter Loan Amount?");
+
+    if (! (parseInt(requestedLoanAmount)  > (bankBalance*2)) ) {
+        console.log()
+        alert("Accepted");
+        //set loan amount
+        loanVar = requestedLoanAmount
+        //Balance
+        loanBal.innerText = loanVar
+
+        // set total balance
+        bankBalance = parseInt(loanVar)+parseInt(bankBalance)
+        piggy.innerText = bankBalance
+
+        loanTaken = true //Loan Flag
+
+    }
+
+// there are many ways to use the prompt feature
+    //sign = window.prompt(); // open the blank prompt window
+    //sign = prompt();       //  open the blank prompt window
+    //sign = window.prompt('Get a Loan Brokie'); // open the window with Text "Are you feeling lucky"
+    //sign = window.prompt('Are you feeling lucky', 'sure'); // open the window with Text "Are you feeling lucky" and default value "sure"
+})
 
 //add event lister for WORK
-
 workButton.addEventListener("click", function (){
         var text = workBalance.textContent
-        var number = Number(text);
-
+        var number = Number(text)
 
         console.log(number)
         workBalance.innerText = number + 100
         workBalanceVariable = number + 100
 
 })
-//add event listerne for bank button
+//add event listener for bank button
         //move balance
+bankButton.addEventListener("click", function (){
+
+    //check if there is any outstanding loan
+    if(loanTaken == true ){
+
+        //if there is, reduce debt by 10%
+        loan_is = Number(loanBal.textContent)
+        reduced_loan = loan_is - (loan_is * 0.1)
+        bankBalance = ( bankBalance  ) + (workBalanceVariable - (loan_is * 0.1))
+        //workBalanceVariable = bankBalance
+        //Display new loan amount
+        loanVar = reduced_loan
+        loanBal.innerText = loanVar
+
+        if (loanVar == 0 ){
+            loanTaken = false
+        }
 
 
+
+
+
+    } else {
+
+        bankBalance += workBalanceVariable
+    }
+
+    //before setting the bank
+    piggy.innerText = bankBalance
+
+    //reset work balance
+    workBalance.innerText = "0"
+
+    //
+
+
+
+})
 
 
 

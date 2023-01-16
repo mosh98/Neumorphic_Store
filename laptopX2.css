@@ -12,3 +12,25 @@
 .Same{
     display:inline-block;
 }
+.neumorphic-button:hover {
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3), -3px -3px 10px rgba(255, 255, 255, 0.6);
+    color: black;
+    background-color: #ddd;
+    text-decoration: none;
+}
+.neumorphic-button:active {
+    color: black;
+    background-color: #ccc;
+    text-decoration: none;
+}
+.neumorphic-button {
+    text-decoration: none;
+    color: black;
+    background-color: #eee;
+    padding: 12px 24px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2), -2px -2px 8px rgba(255, 255, 255, 0.5);
+}
+.neumorphic-button:visited {
+    text-decoration: none;
+}
