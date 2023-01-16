@@ -10,7 +10,13 @@ var bankButton = document.getElementById("bank-btn")
 var piggy = document.getElementById("bankBalance") //piggy for piggy bank
 var getLoan = document.getElementById("loan-btn")
 var loanBal = document.getElementById("LoanBalance")
+var debtField = document.getElementById("debt-balance-field")
 var buyButton = document.getElementById("BUY")
+var repayButton = document.getElementById("repay-btn")
+
+loanBal.style.visibility = "hidden"
+debtField.style.visibility = "hidden"
+repayButton.style.visibility = "hidden"
 
 let laptops = []
 let workBalanceVariable = 0
@@ -37,9 +43,19 @@ const addCompToMenu = (eachComp) => {
 }
 
 const populateLaptopInfo = (laptopInstance) => {
-    productFeatures.innerText = laptopInstance.specs
+
+    list_of_speks = laptopInstance.specs
+    string_of_speks = ""
+    for(let i = 0; i < list_of_speks.length; i++){
+        string_of_speks += "\n"+ "- "+list_of_speks[i]
+    }
+
+    productFeatures.innerText = string_of_speks
     //Product Description
     productDescription.innerText = laptopInstance.description
+
+
+
     //Second title
     secondTitle.textContent = laptopInstance.title
     // set image
@@ -89,14 +105,13 @@ getLoan.addEventListener("click",function (){
         piggy.innerText = bankBalance
 
         loanTaken = true //Loan Flag
+        loanBal.style.visibility = "visible"
+        debtField.style.visibility = "visible"
+        repayButton.style.visibility = "visible"
 
     }
 
-// there are many ways to use the prompt feature
-    //sign = window.prompt(); // open the blank prompt window
-    //sign = prompt();       //  open the blank prompt window
-    //sign = window.prompt('Get a Loan Brokie'); // open the window with Text "Are you feeling lucky"
-    //sign = window.prompt('Are you feeling lucky', 'sure'); // open the window with Text "Are you feeling lucky" and default value "sure"
+
 })
 
 //add event lister for WORK
@@ -127,6 +142,9 @@ bankButton.addEventListener("click", function (){
 
         if (loanVar == 0 ){
             loanTaken = false
+            loanBal.style.visibility = "hidden"
+            debtField.style.visibility = "hidden"
+            repayButton.style.visibility = "visible"
         }
 
 
@@ -152,18 +170,24 @@ bankButton.addEventListener("click", function (){
 
 //add buy button event listener which reduces bank amount
 buyButton.addEventListener("click", function (){
-    //get the price of the laptop
+    //get price of laptop
+    /**
+     *
+     *
+     */
     priceOfLaptop.innerText= Number(priceOfLaptop.textContent)
     //get the bank balance
     bankBalance = Number(piggy.textContent)
     //check if bank balance is greater than price of laptop
-    if (bankBalance > priceOfLaptop.innerText){
+    if (bankBalance >= priceOfLaptop.innerText){
         //if it is, reduce bank balance by price of laptop
         bankBalance = bankBalance - priceOfLaptop.innerText
         //set bank balance
         piggy.innerText = bankBalance
+        //display message
+        alert( `You have bought the ${secondTitle.innerText} laptop`, priceOfLaptop.innerText, "has been deducted from your account")
     }else {
-        alert("You are Broke")
+        alert("You're Broke")
     }
 
 })

@@ -1,3 +1,4 @@
+
 .selector-for-some-widget {
     box-sizing: content-box;
 }
@@ -15,9 +16,30 @@
 .neumorphic-button:hover {
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3), -3px -3px 10px rgba(255, 255, 255, 0.6);
     color: black;
-    background-color: #ddd;
+    background-color: #E0E0E0;
     text-decoration: none;
 }
+.neumorphic-button-blue:hover {
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3), -3px -3px 10px rgba(255, 255, 255, 0.35);
+    color: black;
+    background-color: #E0E0E0;
+    text-decoration: none;
+}
+.neumorphic-button-yellow:hover {
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3), -3px -3px 10px rgba(255, 255, 255, 0.35);
+    color: black;
+    background-color: #E0E0E0;
+    /*make text decoration light yellow*/
+    text-decoration: lightyellow;
+}
+
+.neumorphic-button-green:hover {
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3), -3px -3px 10px rgba(255, 255, 255, 0.3);
+    color: black;
+    background-color: #E0E0E0;
+    text-decoration: none;
+}
+
 .neumorphic-button:active {
     color: black;
     background-color: #ccc;
@@ -25,12 +47,81 @@
 }
 .neumorphic-button {
     text-decoration: none;
+    font-weight: bold;
+    font-size: 1.0em;
     color: black;
-    background-color: #eee;
+    background-color: #E0E0E0;
     padding: 12px 24px;
     border-radius: 4px;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2), -2px -2px 8px rgba(255, 255, 255, 0.5);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), -2px -2px 8px rgba(255, 255, 255, 0.7);
+
 }
 .neumorphic-button:visited {
     text-decoration: none;
 }
+.banner {
+
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+body {
+    background-color: #E0E0E0 !important; /* dark gray */
+}
+
+.neumorphic-card {
+    background-color: #E0E0E0 !important; /* white */
+    box-shadow:  2px 2px 8px rgba(0, 0, 0, 0.4),  -2px -2px 8px rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    transform: translateY(-5px);
+    z-index: 1;
+    transition: all 0.3s ease-in-out;
+    margin: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+select {
+    background-color: #fff; /* white */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4), -2px -2px 8px rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 1em;
+}
+select option {
+    background-color: #FFFFFF4C; /* white */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4), -2px -2px 8px rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 1em;
+    background-size: 20px 20px;
+    ;
+}
+select:hover {
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5), -3px -3px 10px rgba(255, 255, 255, 0.2);
+}
+
+.my-img {
+    background-blend-mode: multiply;
+    opacity: 0.85;
+}
+
+.card select {
+    background-color: #DEDEDFFF;
+}
+
+.header {
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4), -2px -2px 8px rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    color: #333; /* the default text color of Bootstrap cards */
+    background-color: #f7f7f7; /* the default background color of Bootstrap cards */
+}
+
+
+
+
