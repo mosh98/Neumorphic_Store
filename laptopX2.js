@@ -1,18 +1,18 @@
-var select = document.getElementById("dropdown");
-var productFeatures = document.getElementById("product-features")
-var productDescription = document.getElementById("Description")
-var secondTitle = document.getElementById("second-card-title")
-var workBalance = document.getElementById("work-balance")
-var image = document.getElementById("image")
-var priceOfLaptop = document.getElementById("price")
-var workButton = document.getElementById("work-btn")
-var bankButton = document.getElementById("bank-btn")
+var select = document.getElementById("dropdown"); //dropdown menu
+var productFeatures = document.getElementById("product-features") //Product Features
+var productDescription = document.getElementById("Description") //Product Description
+var secondTitle = document.getElementById("second-card-title") //Second title
+var workBalance = document.getElementById("work-balance") //Work Balance- Earned amount field
+var image = document.getElementById("image") //Image
+var priceOfLaptop = document.getElementById("price") //Price
+var workButton = document.getElementById("work-btn") //Work Button
+var bankButton = document.getElementById("bank-btn") //Bank Button
 var piggy = document.getElementById("bankBalance") //piggy for piggy bank
-var getLoan = document.getElementById("loan-btn")
-var loanBal = document.getElementById("LoanBalance")
-var debtField = document.getElementById("debt-balance-field")
-var buyButton = document.getElementById("BUY")
-var repayButton = document.getElementById("repay-btn")
+var getLoan = document.getElementById("loan-btn") //Loan Button
+var loanBal = document.getElementById("LoanBalance") //Loan Balance
+var debtField = document.getElementById("debt-balance-field") //Debt Balance
+var buyButton = document.getElementById("BUY") //Buy Button
+var repayButton = document.getElementById("repay-btn") //Repay Button
 
 loanBal.style.visibility = "hidden"
 debtField.style.visibility = "hidden"
@@ -23,6 +23,7 @@ let workBalanceVariable = 0
 let bankBalance = 200
 let loanVar = 0
 let loanTaken = false
+let repay = false
 
 fetch('https://hickory-quilled-actress.glitch.me/computers')
     .then((response) => response.json() )
@@ -53,8 +54,6 @@ const populateLaptopInfo = (laptopInstance) => {
     productFeatures.innerText = string_of_speks
     //Product Description
     productDescription.innerText = laptopInstance.description
-
-
 
     //Second title
     secondTitle.textContent = laptopInstance.title
@@ -105,9 +104,7 @@ getLoan.addEventListener("click",function (){
         piggy.innerText = bankBalance
 
         loanTaken = true //Loan Flag
-        loanBal.style.visibility = "visible"
-        debtField.style.visibility = "visible"
-        repayButton.style.visibility = "visible"
+        visibility_flag("visible")
 
     }
 
@@ -125,7 +122,13 @@ workButton.addEventListener("click", function (){
 
 })
 //add event listener for bank button
-        //move balance
+function visibility_flag(flag) {
+    loanBal.style.visibility = flag
+    debtField.style.visibility = flag
+    repayButton.style.visibility = flag
+}
+
+//move balance
 bankButton.addEventListener("click", function (){
 
     //check if there is any outstanding loan
@@ -142,14 +145,8 @@ bankButton.addEventListener("click", function (){
 
         if (loanVar == 0 ){
             loanTaken = false
-            loanBal.style.visibility = "hidden"
-            debtField.style.visibility = "hidden"
-            repayButton.style.visibility = "visible"
+            visibility_flag();
         }
-
-
-
-
 
     } else {
 
@@ -162,8 +159,27 @@ bankButton.addEventListener("click", function (){
     //reset work balance
     workBalance.innerText = "0"
 
-    //
 
+})
+repayButton.addEventListener("click", function (){
+        //take away outstanding loan from the work balance
+        //set the work balance to 0
+        //set the outstanding loan to 0
+        //set the bank balance to the work balance(after loan deduction)
+        //set the loan taken flag to false
+    //set flag_visible to "hidden"
+
+    loan_is = Number(loanBal.textContent)
+    //                        100                    81
+    remainding_work_balance = workBalanceVariable - loan_is
+    //Still buys
+    if(remainding_work_balance > 0){
+        new_load_value = remainding_work_balance
+        bankBalance += remainding_work_balance
+        piggy.innerText = bankBalance
+        loanVar = 0
+        loanBal.innerText = loanVar
+    }
 
 
 })
