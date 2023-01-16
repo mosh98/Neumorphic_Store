@@ -4,12 +4,13 @@ var productDescription = document.getElementById("Description")
 var secondTitle = document.getElementById("second-card-title")
 var workBalance = document.getElementById("work-balance")
 var image = document.getElementById("image")
-
+var priceOfLaptop = document.getElementById("price")
 var workButton = document.getElementById("work-btn")
 var bankButton = document.getElementById("bank-btn")
 var piggy = document.getElementById("bankBalance") //piggy for piggy bank
 var getLoan = document.getElementById("loan-btn")
 var loanBal = document.getElementById("LoanBalance")
+var buyButton = document.getElementById("BUY")
 
 let laptops = []
 let workBalanceVariable = 0
@@ -44,6 +45,7 @@ const populateLaptopInfo = (laptopInstance) => {
     // set image
     image.src = 'https://hickory-quilled-actress.glitch.me/computers'.replace('computers','') + laptopInstance.image
     //Price
+    price.textContent = laptopInstance.price
 }
 
 
@@ -145,6 +147,24 @@ bankButton.addEventListener("click", function (){
     //
 
 
+
+})
+
+//add buy button event listener which reduces bank amount
+buyButton.addEventListener("click", function (){
+    //get the price of the laptop
+    priceOfLaptop.innerText= Number(priceOfLaptop.textContent)
+    //get the bank balance
+    bankBalance = Number(piggy.textContent)
+    //check if bank balance is greater than price of laptop
+    if (bankBalance > priceOfLaptop.innerText){
+        //if it is, reduce bank balance by price of laptop
+        bankBalance = bankBalance - priceOfLaptop.innerText
+        //set bank balance
+        piggy.innerText = bankBalance
+    }else {
+        alert("You are Broke")
+    }
 
 })
 
