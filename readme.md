@@ -1,3 +1,5 @@
+### Komputer Store
+
 A small computer store front using HTML, CSS and Javascript. Experiment with **neumorphic** design and see how it would look like.
 
 Note: This is my first time playing with HTML, CSS......
