@@ -13,51 +13,48 @@
 .Same{
     display:inline-block;
 }
-.neumorphic-button:hover {
+/*.neumorphic-button:hover {
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3), -3px -3px 10px rgba(255, 255, 255, 0.6);
     color: black;
-    background-color: #E0E0E0;
+    background-color: #e4e5ed;
     text-decoration: none;
-}
-.neumorphic-button-blue:hover {
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3), -3px -3px 10px rgba(255, 255, 255, 0.35);
+}*/
+.neumorphic-button:hover {
+    background: linear-gradient(145deg, #cdced5, #f4f5fe);
+    box-shadow:  5px 5px 10px #b6b7be,
+    -5px -5px 10px #ffffff;
     color: black;
-    background-color: #E0E0E0;
+    background-color: #e4e5ed;
     text-decoration: none;
-}
-.neumorphic-button-yellow:hover {
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3), -3px -3px 10px rgba(255, 255, 255, 0.35);
-    color: black;
-    background-color: #E0E0E0;
-    /*make text decoration light yellow*/
-    text-decoration: lightyellow;
 }
 
-.neumorphic-button-green:hover {
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3), -3px -3px 10px rgba(255, 255, 255, 0.3);
-    color: black;
-    background-color: #E0E0E0;
-    text-decoration: none;
-}
 
 .neumorphic-button:active {
     color: black;
     background-color: #ccc;
     text-decoration: none;
+    box-shadow: inset 15px 15px 30px #b6b7be,
+    inset -15px -15px 30px #ffffff;
 }
 .neumorphic-button {
+    background: linear-gradient(145deg, #f4f5fe, #cdced5);
     text-decoration: none;
     font-weight: bold;
     font-size: 1.0em;
     color: black;
-    background-color: #E0E0E0;
+    background-color: #e4e5ed;
     padding: 12px 24px;
     border-radius: 4px;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), -2px -2px 8px rgba(255, 255, 255, 0.7);
+    /**box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), -2px -2px 8px rgba(255, 255, 255, 0.7);**/
+    /*box-shadow:  5px 5px 10px #b6b7be,
+    -5px -5px 10px #ffffff;*/
+    box-shadow:  5px 5px 16px #c4c5cc,
+    -5px -5px 16px #ffffff;
 
 }
 .neumorphic-button:visited {
     text-decoration: none;
+
 }
 .banner {
 
@@ -71,11 +68,11 @@
 }
 
 body {
-    background-color: #E0E0E0 !important; /* dark gray */
+    background-color: #e4e5ed !important; /* dark gray */
 }
 
-.neumorphic-card {
-    background-color: #E0E0E0 !important; /* white */
+/*.neumorphic-card {
+    background-color: #e4e5ed !important; !* white *!
     box-shadow:  2px 2px 8px rgba(0, 0, 0, 0.4),  -2px -2px 8px rgba(255, 255, 255, 0.3);
     border-radius: 10px;
     transform: translateY(-5px);
@@ -84,23 +81,37 @@ body {
     margin: 10px;
     margin-bottom: 20px;
     margin-top: 20px;
+}*/
+.neumorphic-card {
+    border-radius: 27px;
+    background: #e4e5ed !important;
+    box-shadow: 5px 5px 16px #c4c5cc,
+    -5px -5px 16px #ffffff;
+    margin: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    transform: translateY(-5px);
+    z-index: 1;
+    transition: all 0.3s ease-in-out;
 }
 
 select {
-    background-color: #fff; /* white */
+    background-color: #e4e5ed; /* white */
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4), -2px -2px 8px rgba(255, 255, 255, 0.3);
     border-radius: 10px;
     padding: 5px;
     font-size: 1em;
 }
+
 select option {
-    background-color: #FFFFFF4C; /* white */
+    background-color: #e4e5ed; /* white */
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4), -2px -2px 8px rgba(255, 255, 255, 0.3);
     border-radius: 10px;
     padding: 5px;
     font-size: 1em;
     background-size: 20px 20px;
-    ;
+
 }
 select:hover {
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5), -3px -3px 10px rgba(255, 255, 255, 0.2);
@@ -112,7 +123,7 @@ select:hover {
 }
 
 .card select {
-    background-color: #DEDEDFFF;
+    background-color: #e4e5ed;
 }
 
 .header {

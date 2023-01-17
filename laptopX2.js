@@ -170,15 +170,29 @@ repayButton.addEventListener("click", function (){
     //set flag_visible to "hidden"
 
     loan_is = Number(loanBal.textContent)
+    console.log(loan_is)
     //                        100                    81
     remainding_work_balance = workBalanceVariable - loan_is
     //Still buys
-    if(remainding_work_balance > 0){
-        new_load_value = remainding_work_balance
-        bankBalance += remainding_work_balance
+    if(remainding_work_balance >= 0){
+        newValue = remainding_work_balance
+        bankBalance += newValue
         piggy.innerText = bankBalance
         loanVar = 0
         loanBal.innerText = loanVar
+
+        //reset work balance
+        workBalance.innerText = 0
+        workBalanceVariable = 0
+        repayButton.style.visibility = "hidden"
+
+    }else {
+        loanVar = Math.abs(remainding_work_balance)
+        loanBal.innerText = loanVar
+
+        //reset work balance
+        workBalance.innerText = 0
+        workBalanceVariable = 0
     }
 
 
