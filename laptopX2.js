@@ -2,7 +2,7 @@ var select = document.getElementById("dropdown"); //dropdown menu
 var productFeatures = document.getElementById("product-features") //Product Features
 var productDescription = document.getElementById("Description") //Product Description
 var secondTitle = document.getElementById("second-card-title") //Second title
-var workBalance = document.getElementById("work-balance") //Work Balance- Earned amount field
+var workBalance = document.getElementById("work-balance") //Work Balance-Earned amount field
 var image = document.getElementById("image") //Image
 var priceOfLaptop = document.getElementById("price") //Price
 var workButton = document.getElementById("work-btn") //Work Button
@@ -14,9 +14,11 @@ var debtField = document.getElementById("debt-balance-field") //Debt Balance
 var buyButton = document.getElementById("BUY") //Buy Button
 var repayButton = document.getElementById("repay-btn") //Repay Button
 
+// Loan informations...Setting these to hidden
 loanBal.style.visibility = "hidden"
 debtField.style.visibility = "hidden"
 repayButton.style.visibility = "hidden"
+
 
 let laptops = []
 let workBalanceVariable = 0
@@ -44,7 +46,11 @@ const addCompToMenu = (eachComp) => {
 }
 
 const populateLaptopInfo = (laptopInstance) => {
-
+    /**
+     * this function is populating the product features section, image, price, and title
+     * also takes care of png and jpeg images
+     *
+     * */
     list_of_speks = laptopInstance.specs
     string_of_speks = ""
     for(let i = 0; i < list_of_speks.length; i++){
@@ -58,15 +64,24 @@ const populateLaptopInfo = (laptopInstance) => {
     //Second title
     secondTitle.textContent = laptopInstance.title
     // set image
-    image.src = 'https://hickory-quilled-actress.glitch.me/computers'.replace('computers','') + laptopInstance.image
+
+
+    if(laptopInstance.title == "The Visor"){
+        image.src = 'https://hickory-quilled-actress.glitch.me/computers'.replace('computers','') + laptopInstance.image.replace('.jpg','.png')
+
+    }else {
+        image.src = 'https://hickory-quilled-actress.glitch.me/computers'.replace('computers','') + laptopInstance.image
+    }
+
+
     //Price
     price.textContent = laptopInstance.price
 }
 
 
 const handleFeature = e => {
-    /*
-    * write comments: what is this function doing?
+    /**
+    * what is this function doing?
     * this function is getting the value of the dropdown menu and then using that value to find the matching computer in the array
     * then it is using the computer object to populate the product features section  */
 
@@ -78,15 +93,13 @@ const handleFeature = e => {
 }
 
 
-select.addEventListener("change", handleFeature)
+select.addEventListener("change", handleFeature) //dropdown menu listener
 
 //add event lister for Get a Loan
 getLoan.addEventListener("click",function (){
-    /*TODO:
-    *   [Done] Set piggy
-    *   You cannot get two bank loans
-    *   Outstadning Loan Field (Only visible after taking a loan)
-    *
+    /**
+    * event listerner to get loan.
+     * if loan is taken, then the repay button is enabled
     * */
 
     let requestedLoanAmount = prompt("Enter Loan Amount?");
@@ -105,7 +118,7 @@ getLoan.addEventListener("click",function (){
 
         loanTaken = true //Loan Flag
         visibility_flag("visible")
-
+        getLoan.style.visibility = "hidden"
     }
 
 
@@ -113,6 +126,10 @@ getLoan.addEventListener("click",function (){
 
 //add event lister for WORK
 workButton.addEventListener("click", function (){
+    /**
+     * event listerner to work.
+     *
+     */
         var text = workBalance.textContent
         var number = Number(text)
 
@@ -130,7 +147,10 @@ function visibility_flag(flag) {
 
 //move balance
 bankButton.addEventListener("click", function (){
-
+    /**
+     * bank button event listener
+     *
+     * */
     //check if there is any outstanding loan
     if(loanTaken == true ){
 
@@ -147,9 +167,7 @@ bankButton.addEventListener("click", function (){
             loanTaken = false
             visibility_flag();
         }
-
     } else {
-
         bankBalance += workBalanceVariable
     }
 
@@ -158,7 +176,6 @@ bankButton.addEventListener("click", function (){
 
     //reset work balance
     workBalance.innerText = "0"
-
 
 })
 repayButton.addEventListener("click", function (){
@@ -175,6 +192,11 @@ repayButton.addEventListener("click", function (){
     remainding_work_balance = workBalanceVariable - loan_is
     //Still buys
     if(remainding_work_balance >= 0){
+        /**
+        * This if statement takes away work balance (i.e setting it to 0)
+         * taking away debt & putting the remaining amount to the bank. (i.e debt is fully paid)
+         *
+         * */
         newValue = remainding_work_balance
         bankBalance += newValue
         piggy.innerText = bankBalance
@@ -185,8 +207,16 @@ repayButton.addEventListener("click", function (){
         workBalance.innerText = 0
         workBalanceVariable = 0
         repayButton.style.visibility = "hidden"
+        debtField.style.visibility = "hidden"
+        loanBal.style.visibility = "hidden"
+        getLoan.style.visibility = "visible"
+
 
     }else {
+        /**
+         * if debt is bigger than the work amount
+         * it deducts the debt according to the work balance (i.e the debt is not fully paid) */
+
         loanVar = Math.abs(remainding_work_balance)
         loanBal.innerText = loanVar
 
@@ -200,11 +230,12 @@ repayButton.addEventListener("click", function (){
 
 //add buy button event listener which reduces bank amount
 buyButton.addEventListener("click", function (){
-    //get price of laptop
     /**
+     * event listener for buy button.
      *
-     *
+     * @type {number}
      */
+    //get price of laptop
     priceOfLaptop.innerText= Number(priceOfLaptop.textContent)
     //get the bank balance
     bankBalance = Number(piggy.textContent)
