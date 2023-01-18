@@ -27,18 +27,25 @@ let loanVar = 0
 let loanTaken = false
 let repay = false
 
+/**
+ * Featching info from the API
+ * */
 fetch('https://hickory-quilled-actress.glitch.me/computers')
     .then((response) => response.json() )
     .then(data => computers = data)
     .then(data => laptops = data)
     .then( computers => handleComputers(computers))
 
+//add event listener for dropdown menu
 const handleComputers = (computers) => {
     computers.forEach(x => addCompToMenu(x)); //Adding menu
     // add default value
     populateLaptopInfo(computers[0])
 }
 const addCompToMenu = (eachComp) => {
+    /**
+     * this function is adding the computers to the dropdown menu
+     * */
     const compElement = document.createElement("option") //creating 1 element, like a placeholder
     compElement.value = eachComp.id //Assign each element an id
     compElement.appendChild(document.createTextNode(eachComp.title)) //then assign the title
@@ -49,7 +56,6 @@ const populateLaptopInfo = (laptopInstance) => {
     /**
      * this function is populating the product features section, image, price, and title
      * also takes care of png and jpeg images
-     *
      * */
     list_of_speks = laptopInstance.specs
     string_of_speks = ""
@@ -91,6 +97,7 @@ const handleFeature = e => {
     //Price
 
 }
+
 
 
 select.addEventListener("change", handleFeature) //dropdown menu listener
@@ -231,9 +238,8 @@ repayButton.addEventListener("click", function (){
 //add buy button event listener which reduces bank amount
 buyButton.addEventListener("click", function (){
     /**
-     * event listener for buy button.
-     *
-     * @type {number}
+     * event listener for buy button
+     * 
      */
     //get price of laptop
     priceOfLaptop.innerText= Number(priceOfLaptop.textContent)
