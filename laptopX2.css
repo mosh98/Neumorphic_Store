@@ -87,17 +87,19 @@ body {
     margin-top: 20px;
 }*/
 .neumorphic-card {
-    border-radius: 27px;
+    border-radius: 142px;
     background: #e4e5ed !important;
-    box-shadow: 5px 5px 16px #c4c5cc,
-    -5px -5px 16px #ffffff;
+    /*box-shadow: 5px 5px 16px #c4c5cc,
+    -5px -5px 16px #ffffff;*/
+    box-shadow:  5px 5px 15px #c0c0c7,
+    -5px -5px 15px #ffffff;
     margin: 10px;
     margin-bottom: 20px;
     margin-top: 20px;
     border-radius: 10px;
-    transform: translateY(-5px);
-    z-index: 1;
-    transition: all 0.3s ease-in-out;
+    /*transform: translateY(-5px);*/
+    /*z-index: 1;*/
+    /*transition: all 0.3s ease-in-out;*/
 }
 
 select {
