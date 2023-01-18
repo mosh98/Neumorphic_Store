@@ -20,8 +20,9 @@
     text-decoration: none;
 }*/
 .neumorphic-button:hover {
-    background: linear-gradient(145deg, #cdced5, #f4f5fe);
-    box-shadow:  5px 5px 10px #b6b7be,
+    /**background: linear-gradient(145deg, #cdced5, #f4f5fe);**/
+    box-shadow: inset 5px 5px 15px #cdced5,
+    inset -5px -5px 15px #fbfcff;
     -5px -5px 10px #ffffff;
     color: black;
     background-color: #e4e5ed;
@@ -37,7 +38,7 @@
     inset -15px -15px 30px #ffffff;
 }
 .neumorphic-button {
-    background: linear-gradient(145deg, #f4f5fe, #cdced5);
+    /**background: linear-gradient(145deg, #f4f5fe, #cdced5);*/
     text-decoration: none;
     font-weight: bold;
     font-size: 1.0em;
@@ -48,8 +49,11 @@
     /**box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), -2px -2px 8px rgba(255, 255, 255, 0.7);**/
     /*box-shadow:  5px 5px 10px #b6b7be,
     -5px -5px 10px #ffffff;*/
-    box-shadow:  5px 5px 16px #c4c5cc,
-    -5px -5px 16px #ffffff;
+    /*box-shadow:  5px 5px 16px #c4c5cc,
+    -5px -5px 16px #ffffff;*/
+    box-shadow:  5px 5px 15px #cdced5,
+    -5px -5px 15px #fbfcff;
+
 
 }
 .neumorphic-button:visited {
